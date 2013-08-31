@@ -1,0 +1,12 @@
+{
+  "name": "php-webserver",
+  "description": "PHP Web Server Role",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "env_run_lists": {},
+  "default_attributes": {},
+  "override_attributes": {},
+  "run_list": [
+    "recipe[apache2]"
+  ]
+}
