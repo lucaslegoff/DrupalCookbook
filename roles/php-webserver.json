@@ -5,8 +5,13 @@
   "json_class": "Chef::Role",
   "env_run_lists": {},
   "default_attributes": {},
-  "override_attributes": {},
+  "override_attributes": {
+  	"apache" : {
+  		"default_site_enabled" : true
+  	}
+  },
   "run_list": [
+  	"recipe[apt]",
     "recipe[apache2]"
   ]
 }
