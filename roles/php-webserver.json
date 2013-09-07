@@ -12,6 +12,6 @@
   },
   "run_list": [
   	"recipe[servertools]",
-    "recipe[apache]"
+    "recipe[apache2::apacheBasic]"
   ]
 }

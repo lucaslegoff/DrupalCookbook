@@ -20,4 +20,3 @@ template "/etc/apache2/ports.conf" do
   source "ports.conf.erb"
   notifies :restart, "service[apache2]"
 end
-
