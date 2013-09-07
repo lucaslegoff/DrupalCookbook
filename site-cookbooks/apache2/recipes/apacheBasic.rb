@@ -18,5 +18,6 @@ end
 
 template "/etc/apache2/ports.conf" do
   source "ports.conf.erb"
+  variables :apache_listen_ports => node['apache']['listen_ports'].map { |p| p.to_i }.uniq
   notifies :restart, "service[apache2]"
 end
