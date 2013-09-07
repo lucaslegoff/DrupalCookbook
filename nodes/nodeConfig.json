@@ -1,1 +1,3 @@
-{ "run_list": "role[php-webserver]"}
+{ 
+	"run_list": "recipe[php-webserver]"
+}
