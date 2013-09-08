@@ -1,3 +1,8 @@
 { 
-	"run_list": "recipe[php-webserver]"
+	"run_list": ["recipe[php-webserver]", "recipe[mysql-server]"],
+    "mysql": {
+      "server_repl_password": "testrepl",
+      "server_debian_password": "testdebian",
+      "server_root_password": "testroot"
+    }
 }
