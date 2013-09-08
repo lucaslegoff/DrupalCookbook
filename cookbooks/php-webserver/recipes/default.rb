@@ -10,3 +10,4 @@
 include_recipe "apt"
 include_recipe "servertools"
 include_recipe "php-webserver::apache"
+include_recipe "php-webserver::php"

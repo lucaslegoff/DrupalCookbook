@@ -1,0 +1,1 @@
+default['php']['packages'] = ['php5', 'php5-cli', 'php5-mcrypt']
