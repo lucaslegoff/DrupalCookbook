@@ -1,5 +1,5 @@
 { 
-	"run_list": ["recipe[php-webserver]", "recipe[mysql-server]"],
+	"run_list": ["recipe[php-webserver]", "recipe[mysql-server]", "recipe[php-webserver::phpmyadmin]"],
     "mysql": {
       "server_root_password": "testroot",
       "server_repl_password": "testrepl",
