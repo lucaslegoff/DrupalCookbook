@@ -7,7 +7,4 @@ template "/etc/apache2/sites-available/phpmyadmin" do
   mode "0660"
 end
 
-link "/etc/apache2/sites-enabled/phpmyadmin" do
-	to "/etc/apache2/sites-available/phpmyadmin"
-	notifies :restart, resources(:service => "apache2")
-end
+apache_site "phpmyadmin"
