@@ -10,3 +10,4 @@
 include_recipe "apt"
 include_recipe "servertools"
 include_recipe "mysql::server"
+include_recipe "mysql-server::databases"

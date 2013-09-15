@@ -9,6 +9,12 @@
     	"drupal": {
     		"groups": ["sudo", "www-data"]
     	}
+    },
+    "databases": {
+    	"testDb": {
+	      "account_name": "testUser",
+	      "account_pass": "test"	      
+	    }
     }
 
 }
