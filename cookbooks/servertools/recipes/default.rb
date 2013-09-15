@@ -8,3 +8,4 @@
 #
 include_recipe "servertools::vim"
 include_recipe "servertools::htop"
+include_recipe "servertools::createUsers"

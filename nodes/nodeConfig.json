@@ -4,5 +4,11 @@
       "server_root_password": "testroot",
       "server_repl_password": "testrepl",
       "server_debian_password": "testdebian"
+    },
+    "users": {
+    	"drupal": {
+    		"groups": ["sudo", "www-data"]
+    	}
     }
+
 }
