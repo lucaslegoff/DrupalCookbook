@@ -1,9 +1,9 @@
 { 
-	"run_list": ["recipe[php-webserver]", "recipe[mysql-server]", "recipe[php-webserver::phpmyadmin]"],
+	"run_list": ["recipe[php-webserver]", "recipe[php-webserver::phpmyadmin]", "recipe[mysql-server]"],
     "mysql": {
-      "server_root_password": "testroot",
-      "server_repl_password": "testrepl",
-      "server_debian_password": "testdebian"
+      "server_root_password": "root",
+      "server_repl_password": "root",
+      "server_debian_password": "root"
     },
     "users": {
     	"drupal": {
@@ -15,6 +15,9 @@
 	      "account_name": "testUser",
 	      "account_pass": "test"	      
 	    }
+    },
+    "sites": {
+      "testSite": {}
     }
 
 }
