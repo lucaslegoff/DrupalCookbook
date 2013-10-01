@@ -9,3 +9,4 @@ version          '0.1.0'
 depends "apt"
 depends "servertools"
 depends "apache2"
+depends "php"
