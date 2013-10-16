@@ -1,4 +1,5 @@
 {
   "id": "admin",
-  "password": "supersecret"
+  "password": "supersecret",
+  "roles" : ["manager"]
 }
