@@ -23,21 +23,42 @@ bash 'unpack solr' do
   not_if "test -d #{node['solr']['extracted']}"
 end
 
-directory node['solr']['home'] do
-  owner node["tomcat"]["user"]
-  group node['tomcat']['group']
-  mode "755"
-  recursive true
-  action :create
-end
+if node["solr"]["instances"]
 
-#copy files to solr home
-bash "copy config files" do
-  code "cp -r #{node.solr.extracted}/example/solr/* #{node.solr.home}"
-end
+  	node["solr"]["instances"].each do |name|
 
-bash "copy war files" do
-  code "cp #{node.solr.war} #{node.solr.home}/"
-  creates #{node.solr.war}
+		directory "#{node['solr']['home']}/#{name}" do
+		  owner node["tomcat"]["user"]
+		  group node['tomcat']['group']
+		  mode "755"
+		  recursive true
+		  action :create
+		end
+
+		#copy files to solr home
+		bash "copy config files" do
+		  code "cp -r #{node.solr.extracted}/example/solr/* #{node.solr.home}/#{name}"
+		end
+
+		bash "copy war files" do
+		  code "cp #{node.solr.war.path} #{node.solr.home}/#{name}/"
+		  creates #{node.solr.war.path}
+		end
+
+		#tomcat application config file
+		template "#{node.solr.home}/#{name}/#{name}.xml" do
+			source "solr-tomcatFragment.xml.erb"
+			owner node["tomcat"]["user"]
+		  	group node['tomcat']['group']
+		  	mode "755"
+		  	variables :solrInstanceName => name
+		  	notifies :restart, "service[tomcat]"
+		end
+
+		link "#{node.tomcat.config_dir}/Catalina/localhost/#{name}.xml" do
+			to "#{node.solr.home}/#{name}/#{name}.xml"
+		end
+	end
+
 end
 

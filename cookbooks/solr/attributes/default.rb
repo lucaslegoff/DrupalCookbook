@@ -10,13 +10,14 @@ if solr.version.split('.').first.to_i >= 4
   default['solr']['link']      = "http://archive.apache.org/dist/lucene/solr/#{default['solr']['version']}/solr-#{default['solr']['version']}.tgz"
   default['solr']['download']  = "#{default['solr']['directory']}/solr-#{default['solr']['version']}.tgz"
   default['solr']['extracted'] = "#{default['solr']['directory']}/solr-#{default['solr']['version']}"
-  default['solr']['war']       = "#{default['solr']['extracted']}/dist/solr-#{default['solr']['version']}.war"
+  default['solr']['war']['file'] = "solr-#{default['solr']['version']}.war"
+  default['solr']['war']['path'] = "#{default['solr']['extracted']}/dist/#{default['solr']['war']['file']}"
 else
   default['solr']['link']      = "http://archive.apache.org/dist/lucene/solr/#{default['solr']['version']}/apache-solr-#{default['solr']['version']}.tgz"
   default['solr']['download']  = "#{default['solr']['directory']}/apache-solr-#{default['solr']['version']}.tgz"
   default['solr']['extracted'] = "#{default['solr']['directory']}/apache-solr-#{default['solr']['version']}"
-  default['solr']['war']       = "#{default['solr']['extracted']}/dist/apache-solr-#{default['solr']['version']}.war"
+  default['solr']['war']['file'] = "apache-solr-#{default['solr']['version']}.war"
+  default['solr']['war']['path'] = "#{default['solr']['extracted']}/dist/#{default['solr']['war']['file']}"
 end
 
-default['solr']['instanceName'] = "defaultSolr"
-default['solr']['home'] = "/opt/solr/#{default['solr']['instanceName']}"
+default['solr']['home'] = "/opt/solr"
