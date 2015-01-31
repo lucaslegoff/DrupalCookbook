@@ -37,16 +37,16 @@ if node["solr"]["instances"]
 
 		#copy files to solr home
 		bash "copy config files" do
-		  code "cp -r #{node.solr.extracted}/example/solr/* #{node.solr.home}/#{name}"
+		  code "cp -r #{node['solr']['extracted']}/example/solr/* #{node['solr']['home']}/#{name}"
 		end
 
 		bash "copy war files" do
-		  code "cp #{node.solr.war.path} #{node.solr.home}/#{name}/"
-		  creates #{node.solr.war.path}
+		  code "cp #{node['solr']['war']['path']} #{node['solr']['home']}/#{name}/"
+		  creates #{node['solr']['war']['path']}
 		end
 
 		#tomcat application config file
-		template "#{node.solr.home}/#{name}/#{name}.xml" do
+		template "#{node['solr']['home']}/#{name}/#{name}.xml" do
 			source "solr-tomcatFragment.xml.erb"
 			owner node["tomcat"]["user"]
 		  	group node['tomcat']['group']
@@ -55,8 +55,8 @@ if node["solr"]["instances"]
 		  	notifies :restart, "service[tomcat]"
 		end
 
-		link "#{node.tomcat.config_dir}/Catalina/localhost/#{name}.xml" do
-			to "#{node.solr.home}/#{name}/#{name}.xml"
+		link "#{node['tomcat']['config_dir']}/Catalina/localhost/#{name}.xml" do
+			to "#{node['solr']['home']}/#{name}/#{name}.xml"
 		end
 	end
 

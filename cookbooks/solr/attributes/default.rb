@@ -1,9 +1,11 @@
-override["tomcat"]["port"] = 8983
-override['tomcat']['keytool'] = "/usr/lib/jvm/java-6-openjdk/bin/keytool"
-override['java']['java_home'] = "/usr/lib/jvm/java-6-openjdk"
+default["tomcat"]["port"] = 8983
+default['java']['jdk_version'] = '7'
+default["tomcat"]["base_version"] = 7
+default['tomcat']['keytool'] = "#{default['java']['java_home']}/bin/keytool"
+default['java']['java_home'] = "#{default['java']['java_home']}"
 
-default['solr']['version'] = "3.6.1"
-default['solr']['checksum'] = "1b4552ba95c8456d4fbd596e82028eaa0619b6942786e98e1c4c31258543c708" #sha265
+default['solr']['version'] = "4.6.1"
+default['solr']['checksum'] = "61f09ee980590b2a420c46a0999f7233f58eb8e4" #sha265
 default['solr']['directory'] = "/usr/local/src"
 
 if solr.version.split('.').first.to_i >= 4
