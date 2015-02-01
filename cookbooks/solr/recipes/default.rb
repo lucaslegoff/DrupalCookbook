@@ -27,7 +27,7 @@ if node["solr"]["instances"]
 
   	node["solr"]["instances"].each do |name|
 
-		directory "#{node['solr']['home']}/#{name}" do
+  		directory "#{node['solr']['home']}/#{name}" do
 		  owner node["tomcat"]["user"]
 		  group node['tomcat']['group']
 		  mode "755"
@@ -38,6 +38,11 @@ if node["solr"]["instances"]
 		#copy files to solr home
 		bash "copy config files" do
 		  code "cp -r #{node['solr']['extracted']}/example/solr/* #{node['solr']['home']}/#{name}"
+		end
+
+		#copy lib files for slf4j
+		bash "copy lib files" do
+		  code "cp -r #{node['solr']['extracted']}/example/lib/ext/* /var/lib/tomcat#{node["tomcat"]["base_version"]}/common"
 		end
 
 		bash "copy war files" do
@@ -58,6 +63,11 @@ if node["solr"]["instances"]
 		link "#{node['tomcat']['config_dir']}/Catalina/localhost/#{name}.xml" do
 			to "#{node['solr']['home']}/#{name}/#{name}.xml"
 		end
+
+  		bash "change-permission-#{node['solr']['home']}/#{name}" do
+          code "chown -R #{node["tomcat"]["user"]}:#{node['tomcat']['group']} #{node['solr']['home']}/#{name}"
+        end
+
 	end
 
 end

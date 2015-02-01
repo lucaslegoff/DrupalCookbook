@@ -1,11 +1,8 @@
 default["tomcat"]["port"] = 8983
-default['java']['jdk_version'] = '7'
-default["tomcat"]["base_version"] = 7
-default['tomcat']['keytool'] = "#{default['java']['java_home']}/bin/keytool"
-default['java']['java_home'] = "#{default['java']['java_home']}"
+#default['tomcat']['keytool'] = "#{default['java']['java_home']}/bin/keytool"
 
 default['solr']['version'] = "4.6.1"
-default['solr']['checksum'] = "61f09ee980590b2a420c46a0999f7233f58eb8e4" #sha265
+default['solr']['checksum'] = "5ee861d7ae301c0f3fa1e96e4cb42469531d8f9188d477351404561b47e55d94" #sha265
 default['solr']['directory'] = "/usr/local/src"
 
 if solr.version.split('.').first.to_i >= 4
