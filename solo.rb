@@ -1,3 +1,3 @@
-file_cache_path "/var/chef/cache"
-cookbook_path [ "/var/chef/DrupalChef/cookbooks", "/var/chef/DrupalChef/site-cookbooks" ]
-data_bag_path "/var/chef/DrupalChef/data_bags"
+file_cache_path "/opt/chef/cache"
+cookbook_path [ "/opt/chef/machineConfig/cookbooks", "/opt/chef/machineConfig/site-cookbooks" ]
+data_bag_path "/opt/chef/machineConfig/data_bags"

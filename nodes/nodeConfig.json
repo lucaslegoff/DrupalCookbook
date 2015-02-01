@@ -1,7 +1,7 @@
 { 
     "run_list": [  
       "recipe[apt]",
-      "recipe[servertools]",
+      "recipe[servertools]"
       /*
       "recipe[php-webserver]", 
       "recipe[mysql-server]", 
